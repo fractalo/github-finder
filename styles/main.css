@@ -1,0 +1,45 @@
+main {
+    width: 100%;
+}
+
+#app {
+    max-width: 1280px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-users {
+    position: relative;
+    width: 100%;
+    max-width: 24rem;
+    margin: 1rem auto;
+}
+
+.search-users-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-input-icon {
+    position: absolute;
+    left: 0.5rem;
+    opacity: 0.5;
+}
+
+#search-users-query-input {
+    width: 100%;
+    height: 2.5rem;
+    padding-left: 2.25rem;
+    font-size: 1.125rem;
+}
+
+#search-users-results {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    max-height: 20rem;
+}
