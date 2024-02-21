@@ -1,12 +1,25 @@
 
 const BASE_URL = 'https://api.github.com';
 
+const HEADERS = {
+    accept: 'application/vnd.github+json',
+}
 
-export class Github {
+export class GithubApiClient {
     constructor() { 
     }
 
-    async _callApi(path, method, config) {
+    static async get(url) {
+        const response = await this.fetch(
+            url,
+            {
+                headers: HEADERS
+            }
+        );
+        return response.json();
+    }
+
+    async _callApi(path, method = 'GET', config = {}) {
         const { params } = config;
 
         const url = new URL(path, BASE_URL);
@@ -16,7 +29,7 @@ export class Github {
             url,
             {
                 headers: {
-                    accept: 'application/vnd.github+json',
+                    ...HEADERS,
                 },
                 method,
                 body: config.body,
@@ -27,17 +40,23 @@ export class Github {
     }
 
     async searchUsers(query, pageNum = 1, pageSize = 30) {
-        return this._callApi('/search/users', 'GET', {
+        const data = await this._callApi('/search/users', 'GET', {
             params: {
-                query,
+                q: query,
                 page: pageNum,
                 per_page: pageSize,
             }
         });
+
+        return data.items;
     }
 
     async getUser(username) {
         return this._callApi(`/users/${username}`, 'GET');
+    }
+
+    async getUserRepositories(username) {
+        return this._callApi(`/users/${username}/repos`, 'GET');
     }
 
 }
