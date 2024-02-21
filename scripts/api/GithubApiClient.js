@@ -33,22 +33,22 @@ export class GithubApiClient {
                 },
                 method,
                 body: config.body,
+                signal: config.signal,
             }
         );
 
         return response.json();
     }
 
-    async searchUsers(query, pageNum = 1, pageSize = 30) {
-        const data = await this._callApi('/search/users', 'GET', {
+    async searchUsers(options, signal) {
+        return this._callApi('/search/users', 'GET', {
             params: {
-                q: query,
-                page: pageNum,
-                per_page: pageSize,
-            }
+                q: options.query,
+                page: options.pageNum ?? 1,
+                per_page: options.pageSize ?? 30,
+            },
+            signal,
         });
-
-        return data.items;
     }
 
     async getUser(username) {

@@ -5,6 +5,7 @@ main {
 #app {
     max-width: 1280px;
     width: 100%;
+    min-height: 10rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -33,13 +34,62 @@ main {
     width: 100%;
     height: 2.5rem;
     padding-left: 2.25rem;
+    padding-right: 0.5rem;
     font-size: 1.125rem;
 }
 
 #search-users-results {
     position: absolute;
+    z-index: 10;
     width: 100%;
     left: 0;
     top: 100%;
+    margin-top: 0.25rem;
     max-height: 20rem;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background-color: white;
+    padding: 0.25rem;
+    border: 1px solid gray;
+}
+
+.search-users-result {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid lightgray;
+}
+
+.search-users-result:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.search-users-result:active {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.search-users-result-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.search-users-result-username {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.list-item-wrapper {
+	width: 100%;
+	padding: 0.5rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
