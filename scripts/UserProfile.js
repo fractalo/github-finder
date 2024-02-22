@@ -16,6 +16,7 @@ export class UserProfile {
     async setUser(username) {
         if (!username) return;
 
+        this._clearContents();
         this.showSpinner();
 
         this._abortController.abort();
@@ -64,6 +65,10 @@ export class UserProfile {
 
     hideSpinner() {
         this._spinnerEl.remove();
+    }
+
+    _clearContents() {
+        this._rootEl.querySelector('.repository-list').replaceChildren();
     }
 
     _updateUserInfo(user) {
