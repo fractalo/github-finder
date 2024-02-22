@@ -14,6 +14,7 @@ export class UsersSearch {
 
     _init() {
         let timeout;
+        
         this._inputEl.addEventListener('input', () => {
             window.clearTimeout(timeout);
             if (!this._inputEl.value) {
@@ -82,6 +83,7 @@ export class UsersSearch {
                 return;
             }
             console.error(error);
+
         }
     }
 

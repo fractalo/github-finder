@@ -1,5 +1,6 @@
 import { EventEmitter } from "./EventEmitter.js";
 import { createMeterialIconEl } from './utils.js';
+import { activeUserStore } from './stores.js';
 
 export class UsersSearchResultList extends EventEmitter {
 
@@ -74,7 +75,8 @@ export class UsersSearchResultList extends EventEmitter {
         );
 
         resultEl.addEventListener('click', () => {
-            this._emit('click:user', result.login);
+            activeUserStore.set(result.login);
+            this.hide();
         });
         
         return resultEl;
@@ -109,7 +111,7 @@ export class UsersSearchResultList extends EventEmitter {
 
     _createNoSearchResultEl() {
         const messageEl = document.createElement('span');
-        messageEl.textContent = '검색결과가 없습니다.'
+        messageEl.textContent = 'No Users match your search'
         return this._wrapSpecialElement(messageEl);
     }
 }

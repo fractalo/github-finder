@@ -2,5 +2,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: darkgray
+    color: darkgray;
+    padding: 1rem;
 }
